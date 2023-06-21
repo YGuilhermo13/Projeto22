@@ -1,6 +1,8 @@
 <?php
 ##ABRE UMA VARIAVEL DE SESSÃO
 session_start();
+
+$nomeusuario
 ##SOLICITA ARQUIVO CONECTA DB
 include("conectadb.php");
 
@@ -10,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 $nome = $_POST['nome'];
 $senha =$_POST['senha'];
 #QUERY DE BANCO DE DADOS 
-$sql = "SELECT COUNT (usu_id) FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$senha'";
+$sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$senha'";
 $retorno = mysqli_query($link, $sql);
 
 ##TODO RETORNO DO BANCO É RETORNADO EM ARRAY EM PHP
@@ -26,7 +28,10 @@ $cont = $tbl[0];
 if($cont ==1 )
 {
 $sql = "SELECT * FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$senha' AND usu_ativo = 's'";
+$_SESSION['nomeusuario'] = $nome;
+
 echo"<script>window.location.href='admhome.php';</script>";
+
 }
 else
 {
