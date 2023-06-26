@@ -1,6 +1,10 @@
 <?php 
 include("conectadb.php");
 
+session_start();
+
+$nomeusuario = $_SESSION["nomeusuario"];
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 $nome = $_POST['nome'];
