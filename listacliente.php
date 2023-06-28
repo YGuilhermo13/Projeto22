@@ -6,8 +6,8 @@ session_start();
 
 $nomeusuario = $_SESSION["nomeusuario"];
 
-#JÁ LISTA OS USUARIOS DO MEU BANCO
-$sql = "SELECT * FROM usuarios WHERE usu_ativo = 's'";
+#JÁ LISTA OS CLIENTES DO MEU BANCO
+$sql = "SELECT * FROM clientes WHERE cli_ativo = 's'";
 $retorno = mysqli_query($link, $sql);
 
 #JA FORÇA TRAZER NA VARIAVEL ATIVO
@@ -18,15 +18,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 $ativo = $_POST['ativo'];
 
-#VERIFICA SE O USUARIO ESTÁ ATIVO PARA LISTAR
+#VERIFICA SE O CLIENTE ESTÁ ATIVO PARA LISTAR
 if($ativo == 's')
 {
-    $sql = "SELECT * FROM usuarios WHERE usu_ativo = 's'";
+    $sql = "SELECT * FROM clientes WHERE cli_ativo = 's'";
     $retorno = mysqli_query($link, $sql);
 }
 else 
 {
-    $sql = "SELECT * FROM usuarios WHERE usu_ativo = 'n'";
+    $sql = "SELECT * FROM clientes WHERE cli_ativo = 'n'";
     $retorno = mysqli_query($link, $sql);
 }
 }
@@ -38,7 +38,7 @@ else
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estiloadm.css">
-    <title>LISTA USUARIOS</title>
+    <title>LISTA CLIENTES</title>
 </head>
 <body>
 <div>
@@ -60,7 +60,7 @@ else
         }
         else
         {
-            echo"<script>window.alert('USUARIO NÃO AUTENTICADO'); 
+            echo"<script>window.alert('CLIENTE NÃO AUTENTICADO'); 
             window.location.href='login.php'; </script>";
         }
 
@@ -69,7 +69,7 @@ else
 </div>
 
 <div id ="background">
-    <form action="listausuario.php" method="post">
+    <form action="listacliente.php" method="post">
 <input type="radio" name="ativo" class="radio" value="s" required onclick="submit()"<?=$ativo =='s'?"checked":""?>>ATIVOS
 
 <input type="radio" name="ativo" class="radio" value="n" required onclick="submit()"<?=$ativo =='n'?"checked":""?>>INATIVOS
@@ -79,7 +79,7 @@ else
     <div class="container">
         <table border="1">
             <tr>
-                <th>NOME</th>
+                <th>CPF</th>
                 <th>ALTERAR DADOS</th>
                 <th>ATIVO?</th>
             <tr>
@@ -88,8 +88,8 @@ else
                 ?>
                 <tr>
                     <td><?=$tbl[1]?></td>
-                    <td><a href="alterausuario.php?id=<?= $tbl[0]?>"><input type = "button" value="ALTERAR DADOS"></a></td>
-                    <td><?=$check =($tbl[3] == 's')?"SIM":"NÃO"?>
+                    <td><a href="alteracliente.php?id=<?= $tbl[0]?>"><input type = "button" value="ALTERAR DADOS"></a></td>
+                    <td><?=$check =($tbl[9] == 's')?"SIM":"NÃO"?>
                     </td>
                 </tr>
                     <?php
