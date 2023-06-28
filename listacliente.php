@@ -80,6 +80,12 @@ else
         <table border="1">
             <tr>
                 <th>CPF</th>
+                <th>NOME</th>
+                <th>DATA NASCIMENTO</th>
+                <th>TELEFONE</th>
+                <th>LOGRADOURO</th>
+                <th>NUMERO</th>
+                <th>CIDADE</th>
                 <th>ALTERAR DADOS</th>
                 <th>ATIVO?</th>
             <tr>
@@ -88,6 +94,12 @@ else
                 ?>
                 <tr>
                     <td><?=$tbl[1]?></td>
+                    <td><?=$tbl[2]?></td>
+                    <td><?=$tbl[4]?></td>
+                    <td><?=$tbl[5]?></td>
+                    <td><?=$tbl[6]?></td>
+                    <td><?=$tbl[7]?></td>
+                    <td><?=$tbl[8]?></td>
                     <td><a href="alteracliente.php?id=<?= $tbl[0]?>"><input type = "button" value="ALTERAR DADOS"></a></td>
                     <td><?=$check =($tbl[9] == 's')?"SIM":"NÃO"?>
                     </td>
