@@ -26,7 +26,7 @@ $sql = "SELECT COUNT(pro_id) FROM produtos WHERE pro_nome = '$nome'";
 $retorno = mysqli_query($link, $sql);
 while($tbl = mysqli_fetch_array($retorno))
 {
-    $cont == $tbl[0];
+    $cont = $tbl[0];
 
     if($cont == 1)
     {
@@ -37,9 +37,11 @@ while($tbl = mysqli_fetch_array($retorno))
         $sql = "INSERT INTO produtos (pro_nome, pro_descricao, pro_quantidade, pro_custo, pro_preco,
         pro_ativo, imagem1)
         VALUES ('$nome', '$descricao', '$quantidade', '$custo', '$preco', 's', '$imagem_base64')";
+
         mysqli_query($link, $sql);
-        echo"<script>window.alert('PRODUTO CADASTRADO COM SUCESSO!');</script>";
-        echo"<script>window.location.href='listaproduto.php';</script>";
+
+         echo"<script>window.alert('PRODUTO CADASTRADO COM SUCESSO!');</script>";
+         echo"<script>window.location.href='listaproduto.php';</script>";
     }
 
 } 
