@@ -22,7 +22,10 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
             $_SESSION['nomecliente'] = $tbl[2];
                     echo"<script>window.location.href='loja.php';</script>";
         }
-        echo"<script>window.alert('USUARIO OU SENHA INCORRETOS');</script>";
+    }
+    else
+    {
+         echo"<script>window.alert('USUARIO OU SENHA INCORRETOS');</script>";
     }
 }
 ?>
